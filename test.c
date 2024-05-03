@@ -1,7 +1,7 @@
 #include <mysql/mysql.h>
 #include <stdio.h>
 #include "db_functions.c"
-MYSQL *conn = NULL;
+
 MYSQL_RES *res = NULL;
 MYSQL_ROW row = NULL;
 int main()
