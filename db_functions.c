@@ -8,10 +8,17 @@
  #endif
  
  MYSQL *conn;
- MYSQL_RES *res;
- MYSQL_ROW row;
+ //MYSQL_RES *res;
+ //MYSQL_ROW row;
+
+void freemysqlrsource(MYSQL_RES *res,MYSQL *conn)
+{
+mysql_free_result(res);
+mysql_close(conn);
+}
 
 MYSQL_RES * sendquery(char * query){
+    MYSQL_RES *res;
  char *server = "192.168.1.110";
  char *user = "root";
  char *password = "password"; // Replace with your actual password
@@ -23,18 +30,11 @@ MYSQL_RES * sendquery(char * query){
      exit(1);
  }
  // Execute an SQL query
- if (mysql_query(conn, "SHOW TABLES")) {
+ if (mysql_query(conn, query)) {
      fprintf(stderr, "Error: %s\n", mysql_error(conn));
      exit(1);
  }
  // Retrieve and print table names
  res = mysql_use_result(conn);
- printf("MySQL Tables in %s database:\n", database);
- while ((row = mysql_fetch_row(res)) != NULL) {
-     printf("%s\n", row[0]);
- }
- // Clean up
- mysql_free_result(res);
- mysql_close(conn);
- return 0;
+ return res;
 }
