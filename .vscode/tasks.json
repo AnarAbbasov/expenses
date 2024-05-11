@@ -11,7 +11,9 @@
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
                 "-L/usr/lib64/mysql/",
-                "-lmysqlclient"
+                "-lmysqlclient",
+                "-lncurses",
+                "-lform"
             ],
             "options": {
                 "cwd": "${fileDirname}"
