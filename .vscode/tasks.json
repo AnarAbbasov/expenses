@@ -13,7 +13,8 @@
                 "-L/usr/lib64/mysql/",
                 "-lmysqlclient",
                 "-lncurses",
-                "-lform"
+                "-lform",
+                "-lmenu"
             ],
             "options": {
                 "cwd": "${fileDirname}"
