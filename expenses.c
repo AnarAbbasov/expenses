@@ -37,7 +37,8 @@ void display_menu(WINDOW *main_window)
     items[2] = NULL;
     menu = new_menu(items);
 
-    set_menu_win(menu, main_window);
+   set_menu_sub(menu,derwin(main_window, 6, 38, 3, 100));
+
 
     post_menu(menu);
 
@@ -104,9 +105,9 @@ int main()
             menu_driver(menu, REQ_UP_ITEM);
             break;
         case 10:
-           // WINDOW * form_window=newwin(10, 30, 0, 0);
-           // box(form_window,0,0);
-           // show_entry_form(form_window);
+           WINDOW * form_window=newwin(10, 30, 0, 0);
+           box(form_window,0,0);
+           show_entry_form(form_window);
             break;
         }
     }
