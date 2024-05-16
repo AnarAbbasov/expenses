@@ -6,7 +6,9 @@ WINDOW *my_window; // Rows: 10, Columns: 40, Start position: (5, 10)
 MYSQL_RES *res = NULL;
 MYSQL_ROW row = NULL;
 
-void show_entry_form()
+MENU *menu;
+
+void show_entry_form(WINDOW * form_window)
 {
     FIELD *fields[2];
     fields[0] = new_field(1, 20, 2, 2, 0, 0);
@@ -17,49 +19,34 @@ void show_entry_form()
     set_field_back(fields[1], A_UNDERLINE);
     // Display the form
     FORM *my_form = new_form(fields);
-
-    wrefresh(my_window);
-    set_form_win(my_form, my_window);
-    set_form_sub(my_form, derwin(my_window, 30, 30, 2, 2));
+   
+   
+    set_form_sub(my_form, form_window);
+    //set_form_sub(my_form, derwin(form_window, 10, 50, 0, 0));
     post_form(my_form);
+     
+     wrefresh(form_window);
+     
 }
 
-void display_menu(WINDOW * main_window)
+void display_menu(WINDOW *main_window)
 {
-   ITEM *items[3];
-    items[0] = new_item("Option 1", "Description for Option 1");
-    items[1] = new_item("Option 2", "Description for Option 2");
+    ITEM *items[3];
+    items[0] = new_item("Add Expense", "(Add gas expenses)");
+    items[1] = new_item("Get Report", "(Get report by date)");
     items[2] = NULL;
+    menu = new_menu(items);
 
- MENU *menu = new_menu(items);
+    set_menu_win(menu, main_window);
 
-  set_menu_sub(menu,derwin(main_window, 6, 38, 3, 100));
-
-
-
-  post_menu(menu);
+    post_menu(menu);
 
     wrefresh(main_window);
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
-
 
 int main()
 {
+    char c;
     // Initialize Ncurses
     initscr();
     cbreak();
@@ -93,19 +80,36 @@ int main()
         mvwprintw(my_window, i, 45, row[3]);
         mvwprintw(my_window, i, 75, row[4]);
         i++;
-        if (i==38)
-        {break;}
+        if (i == 38)
+        {
+            break;
+        }
     }
 
     // Print text inside the window
 
     wbkgd(my_window, COLOR_PAIR(1));
-display_menu(my_window);
+    display_menu(my_window);
     wrefresh(my_window);
     // Wait for user input
-  
-    wgetch(my_window);
 
+    while ((c = wgetch(my_window)) != KEY_F(1))
+    {
+        switch (c)
+        {
+        case 'd':
+            menu_driver(menu, REQ_DOWN_ITEM);
+            break;
+        case 'u':
+            menu_driver(menu, REQ_UP_ITEM);
+            break;
+        case 10:
+           // WINDOW * form_window=newwin(10, 30, 0, 0);
+           // box(form_window,0,0);
+           // show_entry_form(form_window);
+            break;
+        }
+    }
     // Clean up and end Ncurses
     delwin(my_window);
     endwin();
