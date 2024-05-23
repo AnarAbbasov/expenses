@@ -36,6 +36,7 @@ void show_entry_form(WINDOW *form_window)
     while ((ch = wgetch(form_window)) != KEY_F(1))
     {
         switch (ch)
+
         {
         case 82:
 
@@ -55,8 +56,10 @@ void show_entry_form(WINDOW *form_window)
             /* Go to previous field */
             mvwprintw(form_window, 9, 13, "XUY");
             wrefresh(form_window);
-           
-    break;
+            break;
+        case 7:
+            form_driver(my_form, REQ_DEL_PREV);
+             break;
         default:
             /* If this is a normal character, it gets */
             /* Printed				  */
