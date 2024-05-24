@@ -10,11 +10,12 @@ MENU *menu;
 
 void show_entry_form(WINDOW *form_window)
 {
-    FIELD *fields[3];
+    FIELD *fields[5];
     fields[0] = new_field(1, 20, 3, 2, 0, 0); // Label purshase date
     fields[1] = new_field(1, 20, 6, 2, 0, 0);
     fields[2] = new_field(1, 20, 9, 2, 0, 0);
-    fields[3] = NULL;
+    fields[3] = new_field(1, 20, 3, 29, 0, 0);
+    fields[4] = NULL;
     set_field_opts(fields[0], O_VISIBLE | O_PUBLIC | O_EDIT | O_ACTIVE);
     set_field_back(fields[0], O_VISIBLE | O_PUBLIC | O_EDIT | O_ACTIVE);
     set_field_back(fields[1], O_VISIBLE | O_PUBLIC | O_EDIT | O_ACTIVE);
@@ -24,12 +25,17 @@ void show_entry_form(WINDOW *form_window)
 
     // set_form_sub(my_form, form_window);
 
-    set_form_sub(my_form, derwin(form_window, 0, 0, 1, 1));
+    set_form_sub(my_form, derwin(form_window, 10, 55, 1, 1));
     wrefresh(form_window);
     post_form(my_form);
     mvwprintw(form_window, 3, 3, "DATE OF PURCHASE");
     mvwprintw(form_window, 6, 3, "GALLONS");
     mvwprintw(form_window, 9, 3, "PRICE/GALLON");
+    mvwprintw(form_window, 3, 30, "STORE ADDRESS");
+    mvwprintw(form_window, 13, 3, "PgUP/PdDn(Navigation)");
+    wattron(form_window,COLOR_PAIR(3) |A_BOLD);
+    mvwprintw(form_window, 14, 3, "Enter to insert transaction");
+
     wrefresh(form_window);
     keypad(form_window, TRUE);
     char ch;
@@ -97,6 +103,7 @@ int main()
     // Refresh the window
     init_pair(1, COLOR_WHITE, COLOR_BLUE);
     init_pair(2, COLOR_WHITE, COLOR_MAGENTA);
+    init_pair(3, COLOR_WHITE, COLOR_RED);
     // Create a window
     my_window = newwin(39, 174, 0, 0);
     box(my_window, 0, 0); // Draw a border around the window
@@ -145,7 +152,7 @@ int main()
             break;
 
         case 10:
-            WINDOW *form_window = newwin(40, 80, 2, 80);
+            WINDOW *form_window = newwin(20, 57, 2, 80);
             box(form_window, 0, 0);
 
             wbkgd(form_window, COLOR_PAIR(2));
