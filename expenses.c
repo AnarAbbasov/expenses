@@ -33,7 +33,7 @@ void show_entry_form(WINDOW *form_window)
     mvwprintw(form_window, 9, 3, "PRICE/GALLON");
     mvwprintw(form_window, 3, 30, "STORE ADDRESS");
     mvwprintw(form_window, 13, 3, "PgUP/PdDn(Navigation)");
-    wattron(form_window,COLOR_PAIR(3) |A_BOLD);
+    wattron(form_window, COLOR_PAIR(3) | A_BOLD);
     mvwprintw(form_window, 14, 3, "Enter to insert transaction");
 
     wrefresh(form_window);
@@ -65,7 +65,7 @@ void show_entry_form(WINDOW *form_window)
             break;
         case 7:
             form_driver(my_form, REQ_DEL_PREV);
-             break;
+            break;
         default:
             /* If this is a normal character, it gets */
             /* Printed				  */
