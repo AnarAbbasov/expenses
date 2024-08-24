@@ -5,15 +5,16 @@
 #ifndef STDIOH
 #define STDIOH
 #include <stdio.h>
+#include <stdlib.h>
 #endif
 
 MYSQL *conn;
 // MYSQL_RES *res;
 // MYSQL_ROW row;
- char *server = "192.168.1.110";
- char *user = "root";
- char *password = "password"; // Replace with your actual password
- char *database = "expenses"; // Replace with your desired database name
+char *server = "192.168.1.110";
+char *user = "root";
+char *password = "password"; // Replace with your actual password
+char *database = "expenses"; // Replace with your desired database name
 #define MAX_STRING 256
 void freemysqlrsource(MYSQL_RES *res, MYSQL *conn)
 {
@@ -23,6 +24,22 @@ void freemysqlrsource(MYSQL_RES *res, MYSQL *conn)
 
 MYSQL_RES *sendquery(char *query)
 {
+    /* check if required env vars set if not exit*/
+    server = getenv("DB_SERVER");
+    user = getenv("DBUSER");
+    password=getenv("PASSWORD");
+     printf(server);
+    if (server == NULL || user == NULL||  password==NULL)
+    {
+       printf("The PATH environment variables are not set.\n");
+       exit (-1);
+    }
+    else
+    {
+        
+    }
+    /********************************************************* */
+
     MYSQL_RES *res;
     conn = mysql_init(NULL);
     // Connect to the database
@@ -42,30 +59,28 @@ MYSQL_RES *sendquery(char *query)
     return res;
 }
 
-
-int add_gas_expense(char * datetime,double gallons,double price,char * address)
+int add_gas_expense(char *datetime, double gallons, double price, char *address)
 {
-  
-  
-   conn = mysql_init(NULL);
-     if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0))
-  {
-      fprintf(stderr, "Error: %s\n", mysql_error(conn));
-      exit(1);
-  }
-   
-    char * query;
-     snprintf(query, MAX_STRING, "INSERT INTO `expenses`.`gas_business` (`purshase_date`, `gallons`, `price_g`, `store_addr`) VALUES ('%s', '%.2f', '%.2f', '%s');", datetime, gallons,price,address);
- printf(query);
- printf("\n");
-        if (mysql_query(conn, query) == 0) {
-            printf("Data inserted successfully!\n");
-            return 0;
-        } else {
-            printf("Error: %s\n", mysql_error(conn));
-            return 1;
-        }
 
+    conn = mysql_init(NULL);
+    if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0))
+    {
+        fprintf(stderr, "Error: %s\n", mysql_error(conn));
+        exit(1);
+    }
+
+    char *query;
+    snprintf(query, MAX_STRING, "INSERT INTO `expenses`.`gas_business` (`purshase_date`, `gallons`, `price_g`, `store_addr`) VALUES ('%s', '%.2f', '%.2f', '%s');", datetime, gallons, price, address);
+    printf(query);
+    printf("\n");
+    if (mysql_query(conn, query) == 0)
+    {
+        printf("Data inserted successfully!\n");
+        return 0;
+    }
+    else
+    {
+        printf("Error: %s\n", mysql_error(conn));
+        return 1;
+    }
 }
-
-
