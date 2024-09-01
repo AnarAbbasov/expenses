@@ -10,12 +10,16 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
+                "${fileDirname}/../bin/${fileBasenameNoExtension}",
+                "-L/home/anar/expenses/lib/",
                 "-L/usr/lib64/mysql/",
+                "-L/usr/lib64",
                 "-lmysqlclient",
+                "-lmenu",
                 "-lncurses",
                 "-lform",
-                "-lmenu"
+                "-ldb_functions",
+                "-I/home/anar/expenses/include/"
             ],
             "options": {
                 "cwd": "${fileDirname}",

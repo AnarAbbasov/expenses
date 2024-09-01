@@ -4,14 +4,23 @@
             "name": "C/C++: gcc build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "program": "${fileDirname}/../bin/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
+            
             "environment": [
-              
+                {
+                    "description": "same as commands below by using 'setenv ...",
+                    "info": "cant debug b/c of libBase/libRecipe now requiring dependency to boost for stacktrace dumps",
+                    "name": "LD_LIBRARY_PATH",
+                    "value": "/home/anar/expenses/lib/:$LD_LIBRARY_PATH"
+                }
+                
+            
               
             ],
+            
             "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
