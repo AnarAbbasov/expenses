@@ -1,3 +1,5 @@
 set_envs.sh
 expenses
 expenses
+lib/libdb_functions.so
+bin/expenses
