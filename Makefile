@@ -15,3 +15,10 @@ all: src/expenses.c lib/libdb_functions.so
 
 clean:
 	rm -f bin/expenses lib/libdb_functions.so
+
+run:
+	export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH;export DB_SERVER=192.168.1.110;export DBUSER=root;export PASSWORD=password;bin/expenses
+	
+	
+	
+	
