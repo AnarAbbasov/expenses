@@ -1,13 +1,4 @@
-#ifndef SQLH
-#define SQLH
-#include <mysql/mysql.h>
-#endif
-#ifndef STDIOH
-#define STDIOH
-#include <stdio.h>
-#include <stdlib.h>
-#endif
-
+#include "db_functions.h"
 MYSQL *conn;
 // MYSQL_RES *res;
 // MYSQL_ROW row;

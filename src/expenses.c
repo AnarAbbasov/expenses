@@ -1,6 +1,6 @@
 #include <ncurses.h>
 #include <form.h>
-#include "db_functions.c"
+#include "db_functions.h"
 #include <menu.h>
 WINDOW *my_window; // Rows: 10, Columns: 40, Start position: (5, 10)
 MYSQL_RES *res = NULL;

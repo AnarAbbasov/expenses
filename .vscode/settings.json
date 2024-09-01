@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "simpletables.h": "c"
+        "simpletables.h": "c",
+        "db_functions.h": "c"
     }
 }
