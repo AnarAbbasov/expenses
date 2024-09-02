@@ -2,6 +2,7 @@
     "files.associations": {
         "stdio.h": "c",
         "simpletables.h": "c",
-        "db_functions.h": "c"
+        "db_functions.h": "c",
+        "ncurses.h": "c"
     }
 }
