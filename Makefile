@@ -17,7 +17,7 @@ all: src/expenses.c lib/libdb_functions.so lib/libwindows.so
 	$(CC) -fPIC -shared  ./src/windows.c -o ./lib/libwindows.so -Iinclude
 
 clean:
-	rm -f bin/expenses lib/libdb_functions.so
+	rm -f bin/expenses lib/libdb_functions.so lib/libwindows.so
 
 run:
 	export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH;export DB_SERVER=192.168.1.211;export DBUSER=root;export PASSWORD=password;bin/expenses
