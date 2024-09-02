@@ -5,7 +5,9 @@ OBJ = $(SRC:.c=.o)
 EXEC = bin/expenses
 
 all: src/expenses.c lib/libdb_functions.so lib/libwindows.so
-	$(CC) -Wall -Wextra -g -L./lib/ -L/usr/lib64/mysql/ -lmysqlclient -lncursesw -ldb_functions -lform -lmenu -lwindows -Iinclude ./src/expenses.c -o ./bin/expenses
+	$(CC) -Wall -Wextra -g -L./lib/ -L/usr/lib64/mysql/ -lmysqlclient \
+	-lncursesw -ldb_functions -lform -lmenu -lwindows -Iinclude \
+	 ./src/expenses.c -o ./bin/expenses
 
 
 
