@@ -3,4 +3,5 @@ expenses
 expenses
 lib/libdb_functions.so
 bin/expenses
-lib/libdb_functions.so
+lib/libwindows.so
+lib/libutils.so
