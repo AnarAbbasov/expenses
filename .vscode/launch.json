@@ -15,8 +15,29 @@
                     "info": "cant debug b/c of libBase/libRecipe now requiring dependency to boost for stacktrace dumps",
                     "name": "LD_LIBRARY_PATH",
                     "value": "/home/anar/expenses/lib/:$LD_LIBRARY_PATH"
-                }
+                },
                 
+
+                {
+                    "description": "same as commands below by using 'setenv ...",
+                    "info": "",
+                    "name": "DB_SERVER",
+                    "value": "192.168.1.211"
+                },
+
+                {
+                    "description": "same as commands below by using 'setenv ...",
+                    "info": "",
+                    "name": "DBUSER",
+                    "value": "root"
+                },
+
+                {
+                    "description": "same as commands below by using 'setenv ...",
+                    "info": "",
+                    "name": "PASSWORD",
+                    "value": "password"
+                }
             
               
             ],

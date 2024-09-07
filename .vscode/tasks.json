@@ -19,6 +19,7 @@
                 "-lncurses",
                 "-lform",
                 "-ldb_functions",
+                "-lwindows",
                 "-I/home/anar/expenses/include/"
             ],
             "options": {
