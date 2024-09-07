@@ -1,10 +1,13 @@
 #ifndef curses
 #define curses
 #include <ncurses.h>
+#include <string.h>
+
 #include <form.h>
 #include "db_functions.h"
 #endif
 #include <menu.h>
+#include "utils.h"
 
 MENU *menu;
 

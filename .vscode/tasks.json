@@ -20,6 +20,7 @@
                 "-lform",
                 "-ldb_functions",
                 "-lwindows",
+                "-lutils",
                 "-I/home/anar/expenses/include/"
             ],
             "options": {

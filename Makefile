@@ -4,9 +4,9 @@ SRC = $(wildcard src/*.c)
 OBJ = $(SRC:.c=.o)
 EXEC = bin/expenses
 
-all: src/expenses.c lib/libdb_functions.so lib/libwindows.so
+all: src/expenses.c lib/libdb_functions.so lib/libwindows.so lib/libutils.so
 	$(CC) -Wall -Wextra -g -L./lib/ -L/usr/lib64/mysql/ -lmysqlclient \
-	-lncursesw -ldb_functions -lform -lmenu -lwindows -Iinclude \
+	-lncursesw -ldb_functions -lform -lmenu -lwindows -lutils -Iinclude \
 	 ./src/expenses.c -o ./bin/expenses
 
 
@@ -18,8 +18,11 @@ all: src/expenses.c lib/libdb_functions.so lib/libwindows.so
 ./lib/libwindows.so: ./src/windows.c
 	$(CC) -g -fPIC -shared  ./src/windows.c -o ./lib/libwindows.so -Iinclude
 
+./lib/libutils.so: ./src/utils.c
+	$(CC) -g -fPIC -shared  ./src/utils.c -o ./lib/libutils.so -Iinclude	
+
 clean:
-	rm -f bin/expenses lib/libdb_functions.so lib/libwindows.so
+	rm -f bin/expenses lib/libdb_functions.so lib/libwindows.so lib/libutils.so
 
 run:
 	export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH;export DB_SERVER=192.168.1.211;export DBUSER=root;export PASSWORD=password;bin/expenses

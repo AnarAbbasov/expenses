@@ -1,6 +1,5 @@
 #include "../include/windows.h"
 
-
 void show_entry_form(WINDOW *form_window)
 {
     FIELD *fields[5];
@@ -32,6 +31,7 @@ void show_entry_form(WINDOW *form_window)
     wrefresh(form_window);
     keypad(form_window, TRUE);
     char ch;
+
     while ((ch = wgetch(form_window)) != KEY_F(1))
     {
         switch (ch)
@@ -53,27 +53,29 @@ void show_entry_form(WINDOW *form_window)
             break;
         case 10:
             /* Go to previous field */
-            mvwprintw(form_window, 9, 13, "XUY");
+           
+            if (validate_datetime(field_buffer(fields[0], 0))==0 && validate_number(field_buffer(fields[1],0))==0 && validate_number(field_buffer(fields[2],0))==0 ){
+            mvwprintw(form_window, 9, 13, "%s", field_buffer(fields[0], 0));
+            printf(field_buffer(fields[0], 0));
             wrefresh(form_window);
+            }
+
             break;
         case 7:
             form_driver(my_form, REQ_DEL_PREV);
             break;
         case 27:
-            //delwin(form_window); 
-            return ;
+            // delwin(form_window);
+            return;
         default:
             /* If this is a normal character, it gets */
             /* Printed				  */
             form_driver(my_form, ch);
-         
+
             break;
         }
     }
 }
-
-
-
 
 void display_menu(WINDOW *main_window)
 {
