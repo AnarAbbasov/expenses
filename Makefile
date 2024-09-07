@@ -13,10 +13,10 @@ all: src/expenses.c lib/libdb_functions.so lib/libwindows.so
 
 
 ./lib/libdb_functions.so: ./src/db_functions.c
-	$(CC) -fPIC -shared  ./src/db_functions.c -o ./lib/libdb_functions.so -Iinclude
+	$(CC) -g -fPIC -shared  ./src/db_functions.c -o ./lib/libdb_functions.so -Iinclude
 
 ./lib/libwindows.so: ./src/windows.c
-	$(CC) -fPIC -shared  ./src/windows.c -o ./lib/libwindows.so -Iinclude
+	$(CC) -g -fPIC -shared  ./src/windows.c -o ./lib/libwindows.so -Iinclude
 
 clean:
 	rm -f bin/expenses lib/libdb_functions.so lib/libwindows.so

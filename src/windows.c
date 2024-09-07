@@ -59,10 +59,14 @@ void show_entry_form(WINDOW *form_window)
         case 7:
             form_driver(my_form, REQ_DEL_PREV);
             break;
+        case 27:
+            //delwin(form_window); 
+            return ;
         default:
             /* If this is a normal character, it gets */
             /* Printed				  */
             form_driver(my_form, ch);
+         
             break;
         }
     }

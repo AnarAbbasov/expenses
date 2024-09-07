@@ -9,9 +9,6 @@ WINDOW *my_window; // Rows: 10, Columns: 40, Start position: (5, 10)
 MYSQL_RES *res = NULL;
 MYSQL_ROW row = NULL;
 
-
-
-
 int main()
 {
     char c;
@@ -74,11 +71,14 @@ int main()
             break;
 
         case 10:
+        /* display entry form*/
             WINDOW *form_window = newwin(20, 57, 2, 80);
             box(form_window, 0, 0);
-
             wbkgd(form_window, COLOR_PAIR(2));
             show_entry_form(form_window);
+            delwin(form_window);
+            touchwin(my_window);
+            wrefresh(my_window);
             break;
         }
     }
