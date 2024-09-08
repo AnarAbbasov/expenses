@@ -18,9 +18,10 @@ jobs:
     - name: create library directories
       run: mkdir lib;mkdir bin
       
-      
+    - name: install dependencies
+      run: sudo apt install ncurses
 
-    - name: Install dependencies
+    - name: compile
       run: make
 
     - name: Run check
