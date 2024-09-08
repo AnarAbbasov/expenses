@@ -8,7 +8,7 @@ void show_alert(WINDOW *mainwin, char * message)
  wclear (mysubwin);
     box(mysubwin, 0, 0);    // Draw a box around the subwindow
     
-    mvwprintw(mysubwin, 4, 5, "Please fix errors on fields!");
+    mvwprintw(mysubwin, 4, 5, message);
  wbkgd(mysubwin, COLOR_PAIR(1));
     wrefresh(mysubwin);     // Refresh the subwindow to show the box
     wrefresh(mainwin);    
@@ -83,7 +83,12 @@ void show_entry_form(WINDOW *form_window)
             if (validate_datetime(field_buffer(fields[0], 0))==0 && validate_number(field_buffer(fields[1],0))==0 && validate_number(field_buffer(fields[2],0))==0 ){
             mvwprintw(form_window, 9, 13, "%s", field_buffer(fields[0], 0));
             printf(field_buffer(fields[0], 0));
+            char * message;
+            strcpy(message,"inserted ");
+            strcat(message ,field_buffer(fields[0], 0)) ;       
+            show_alert(form_window,message);
             wrefresh(form_window);
+            return;
             }
             //mvwprintw(form_window, 9, 13, "Please fix errors on fields!");
             else{
