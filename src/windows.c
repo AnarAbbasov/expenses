@@ -1,5 +1,30 @@
 #include "../include/windows.h"
 
+
+
+void show_alert(WINDOW *mainwin, char * message)
+{
+ WINDOW *mysubwin =derwin(mainwin, 10, 35, 3, 3);
+ wclear (mysubwin);
+    box(mysubwin, 0, 0);    // Draw a box around the subwindow
+    
+    mvwprintw(mysubwin, 4, 5, "Please fix errors on fields!");
+ wbkgd(mysubwin, COLOR_PAIR(1));
+    wrefresh(mysubwin);     // Refresh the subwindow to show the box
+    wrefresh(mainwin);    
+
+     wgetch(mysubwin);     
+ 
+    delwin(mysubwin);
+   touchwin(mainwin);
+    
+  //refresh(my_window);
+
+
+}
+
+
+
 void show_entry_form(WINDOW *form_window)
 {
     FIELD *fields[5];
@@ -26,6 +51,7 @@ void show_entry_form(WINDOW *form_window)
     mvwprintw(form_window, 3, 30, "STORE ADDRESS");
     mvwprintw(form_window, 13, 3, "PgUP/PdDn(Navigation)");
     wattron(form_window, COLOR_PAIR(3) | A_BOLD);
+    
     mvwprintw(form_window, 14, 3, "Enter to insert transaction");
 
     wrefresh(form_window);
@@ -40,7 +66,7 @@ void show_entry_form(WINDOW *form_window)
         case 82:
 
             /* Go to next field */
-
+            
             form_driver(my_form, REQ_NEXT_FIELD);
             /* Go to the end of the present buffer */
             /* Leaves nicely at the last character */
@@ -59,7 +85,12 @@ void show_entry_form(WINDOW *form_window)
             printf(field_buffer(fields[0], 0));
             wrefresh(form_window);
             }
-
+            //mvwprintw(form_window, 9, 13, "Please fix errors on fields!");
+            else{
+            show_alert(form_window,"errors on entrance");
+            wclear(form_window);
+             return;
+            }
             break;
         case 7:
             form_driver(my_form, REQ_DEL_PREV);
@@ -91,3 +122,11 @@ void display_menu(WINDOW *main_window)
 
     wrefresh(main_window);
 }
+
+
+
+
+
+
+
+
