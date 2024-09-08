@@ -1,5 +1,26 @@
 
 #include "../include/utils.h"
+#include "string.h"
+
+
+
+
+
+
+
+
+
+
+
+void make_insert_data(char* Date,char * gallons,char * price,char * address)
+{
+
+sql_insert_data.Date=Date;
+sql_insert_data.gallons=atof(gallons);
+sql_insert_data.price=atof(price);
+sql_insert_data.address=address;
+
+}
 
 
 void trimTrailing(char *str) {

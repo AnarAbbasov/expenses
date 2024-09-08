@@ -78,6 +78,7 @@ int main()
             {
                 /*if report selected*/
                 printf(item_name(cur_item));
+                 break;
             }
             else
             {    /*if entry form selected*/

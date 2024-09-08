@@ -10,7 +10,6 @@
 #include "utils.h"
 
 MENU *menu;
-
 void show_entry_form(WINDOW *form_window);
 void display_menu(WINDOW *main_window);
 

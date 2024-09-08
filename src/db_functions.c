@@ -63,10 +63,10 @@ int add_gas_expense(char *datetime, double gallons, double price, char *address)
     char *query;
     snprintf(query, MAX_STRING, "INSERT INTO `expenses`.`gas_business` (`purshase_date`, `gallons`, `price_g`, `store_addr`) VALUES ('%s', '%.2f', '%.2f', '%s');", datetime, gallons, price, address);
     printf(query);
-    printf("\n");
+   
     if (mysql_query(conn, query) == 0)
     {
-        printf("Data inserted successfully!\n");
+       
         return 0;
     }
     else

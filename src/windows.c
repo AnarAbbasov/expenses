@@ -16,7 +16,7 @@ void show_alert(WINDOW *mainwin, char * message)
      wgetch(mysubwin);     
  
     delwin(mysubwin);
-   touchwin(mainwin);
+   //touchwin(mainwin);
     
   //refresh(my_window);
 
@@ -79,21 +79,23 @@ void show_entry_form(WINDOW *form_window)
             break;
         case 10:
             /* Go to previous field */
-           
+            form_driver(my_form, REQ_END_LINE);
             if (validate_datetime(field_buffer(fields[0], 0))==0 && validate_number(field_buffer(fields[1],0))==0 && validate_number(field_buffer(fields[2],0))==0 ){
-            mvwprintw(form_window, 9, 13, "%s", field_buffer(fields[0], 0));
-            printf(field_buffer(fields[0], 0));
-            char * message;
-            strcpy(message,"inserted ");
-            strcat(message ,field_buffer(fields[0], 0)) ;       
-            show_alert(form_window,message);
+            
+        make_insert_data(field_buffer(fields[0], 0),field_buffer(fields[1], 0),field_buffer(fields[2], 0),field_buffer(fields[3], 0));
+            add_gas_expense(sql_insert_data.Date,sql_insert_data.gallons,sql_insert_data.price,sql_insert_data.address);
+            
+            
+           
+                 
+           show_alert(form_window,"inserted");
             wrefresh(form_window);
             return;
             }
             //mvwprintw(form_window, 9, 13, "Please fix errors on fields!");
             else{
             show_alert(form_window,"errors on entrance");
-            wclear(form_window);
+            //wclear(form_window);
              return;
             }
             break;
