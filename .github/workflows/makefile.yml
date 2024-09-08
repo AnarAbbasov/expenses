@@ -17,6 +17,7 @@ jobs:
     
     - name: create library directories
       run: mkdir lib
+      run: mkdir bin
       
 
     - name: Install dependencies
