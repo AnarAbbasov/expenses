@@ -22,7 +22,7 @@ MYSQL_RES *sendquery(char *query)
      printf(server);
     if (server == NULL || user == NULL||  password==NULL)
     {
-       printf("The PATH environment variables are not set.\n");
+       printf("environment variables are not set.\n");
        exit (-1);
     }
     else
