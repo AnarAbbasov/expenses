@@ -54,7 +54,8 @@ int main()
     }
 
     // Print text inside the window
-
+ mysql_free_result(res);
+  mysql_close(conn);
     wbkgd(my_window, COLOR_PAIR(1));
     display_menu(my_window);
     wrefresh(my_window);

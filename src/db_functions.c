@@ -1,12 +1,12 @@
 #include "db_functions.h"
-MYSQL *conn;
+
 // MYSQL_RES *res;
 // MYSQL_ROW row;
 char *server = "192.168.1.110";
 char *user = "root";
 char *password = "password"; // Replace with your actual password
 char *database = "expenses"; // Replace with your desired database name
-#define MAX_STRING 256
+#define MAX_STRING 556
 void freemysqlrsource(MYSQL_RES *res, MYSQL *conn)
 {
     mysql_free_result(res);
@@ -31,7 +31,7 @@ MYSQL_RES *sendquery(char *query)
     }
     /********************************************************* */
 
-    MYSQL_RES *res;
+    
     conn = mysql_init(NULL);
     // Connect to the database
     if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0))
@@ -52,7 +52,7 @@ MYSQL_RES *sendquery(char *query)
 
 int add_gas_expense(char *datetime, double gallons, double price, char *address)
 {
-
+char query[MAX_STRING];
     conn = mysql_init(NULL);
     if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0))
     {
@@ -60,13 +60,13 @@ int add_gas_expense(char *datetime, double gallons, double price, char *address)
         exit(1);
     }
 
-    char *query;
+    
     snprintf(query, MAX_STRING, "INSERT INTO `expenses`.`gas_business` (`purshase_date`, `gallons`, `price_g`, `store_addr`) VALUES ('%s', '%.2f', '%.2f', '%s');", datetime, gallons, price, address);
-    printf(query);
+    //printf(query);
    
     if (mysql_query(conn, query) == 0)
     {
-       
+       mysql_close(conn);
         return 0;
     }
     else
