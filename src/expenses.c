@@ -54,8 +54,8 @@ int main()
     }
 
     // Print text inside the window
- mysql_free_result(res);
-  mysql_close(conn);
+    mysql_free_result(res);
+    mysql_close(conn);
     wbkgd(my_window, COLOR_PAIR(1));
     display_menu(my_window);
     wrefresh(my_window);
@@ -75,14 +75,14 @@ int main()
         case 10:
 
             ITEM *cur_item = current_item(menu);
-            if (strcmp(item_name(cur_item), "Get Report")==0)
+            if (strcmp(item_name(cur_item), "Get Report") == 0)
             {
                 /*if report selected*/
                 printf(item_name(cur_item));
-                 break;
+                break;
             }
             else
-            {    /*if entry form selected*/
+            { /*if entry form selected*/
                 /* display entry form*/
                 WINDOW *form_window = newwin(20, 57, 2, 80);
                 box(form_window, 0, 0);

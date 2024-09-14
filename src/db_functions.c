@@ -18,20 +18,18 @@ MYSQL_RES *sendquery(char *query)
     /* check if required env vars set if not exit*/
     server = getenv("DB_SERVER");
     user = getenv("DBUSER");
-    password=getenv("PASSWORD");
-     printf(server);
-    if (server == NULL || user == NULL||  password==NULL)
+    password = getenv("PASSWORD");
+    printf(server);
+    if (server == NULL || user == NULL || password == NULL)
     {
-       printf("environment variables are not set.\n");
-       exit (-1);
+        printf("environment variables are not set.\n");
+        exit(-1);
     }
     else
     {
-        
     }
     /********************************************************* */
 
-    
     conn = mysql_init(NULL);
     // Connect to the database
     if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0))
@@ -52,7 +50,7 @@ MYSQL_RES *sendquery(char *query)
 
 int add_gas_expense(char *datetime, double gallons, double price, char *address)
 {
-char query[MAX_STRING];
+    char query[MAX_STRING];
     conn = mysql_init(NULL);
     if (!mysql_real_connect(conn, server, user, password, database, 0, NULL, 0))
     {
@@ -60,13 +58,12 @@ char query[MAX_STRING];
         exit(1);
     }
 
-    
     snprintf(query, MAX_STRING, "INSERT INTO `expenses`.`gas_business` (`purshase_date`, `gallons`, `price_g`, `store_addr`) VALUES ('%s', '%.2f', '%.2f', '%s');", datetime, gallons, price, address);
-    //printf(query);
-   
+    // printf(query);
+
     if (mysql_query(conn, query) == 0)
     {
-       mysql_close(conn);
+        mysql_close(conn);
         return 0;
     }
     else
