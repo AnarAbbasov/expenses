@@ -140,4 +140,35 @@ void show_report_by_date_form(WINDOW *form_window)
     mvwprintw(form_window, 3, 3, "DATE BEGIN");
     mvwprintw(form_window, 6, 3, "DATE END");
     wrefresh(form_window);
+    keypad(form_window, TRUE);
+    char ch;
+    while ((ch = wgetch(form_window)) != KEY_F(1))
+    {
+        switch (ch)
+        {
+        case 82:
+            form_driver(my_form, REQ_NEXT_FIELD);
+            /* Go to the end of the present buffer */
+            /* Leaves nicely at the last character */
+            form_driver(my_form, REQ_END_LINE);
+            break;
+
+        case 83:
+            /* Go to previous field */
+            form_driver(my_form, REQ_PREV_FIELD);
+            form_driver(my_form, REQ_END_LINE);
+            break;
+        case 7:
+            form_driver(my_form, REQ_DEL_PREV);
+            break;
+        case 27:
+            // delwin(form_window);
+            return;
+        default:
+            /* If this is a normal character, it gets
+            /* Printed				  */
+            form_driver(my_form, ch);
+            break;
+        }
+    }
 }

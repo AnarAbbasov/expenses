@@ -24,7 +24,7 @@ int main()
     init_pair(1, COLOR_WHITE, COLOR_BLUE);
     init_pair(2, COLOR_WHITE, COLOR_MAGENTA);
     init_pair(3, COLOR_WHITE, COLOR_RED);
-     init_pair(4, COLOR_WHITE, COLOR_GREEN);
+    init_pair(4, COLOR_WHITE, COLOR_GREEN);
     // Create a window
     my_window = newwin(39, 174, 0, 0);
     box(my_window, 0, 0); // Draw a border around the window
@@ -74,16 +74,19 @@ int main()
             break;
 
         case 10:
-            
+
             ITEM *cur_item = current_item(menu);
             if (strcmp(item_name(cur_item), "Get Report") == 0)
             {
                 /*if report selected*/
                 printf(item_name(cur_item));
-                 WINDOW *form_window = newwin(20, 57, 2, 80);
- box(form_window, 0, 0);
- wbkgd(form_window, COLOR_PAIR(4));
- show_report_by_date_form(form_window);
+                WINDOW *form_window = newwin(20, 57, 2, 80);
+                box(form_window, 0, 0);
+                wbkgd(form_window, COLOR_PAIR(4));
+                show_report_by_date_form(form_window);
+                delwin(form_window);
+                touchwin(my_window);
+                wrefresh(my_window);
                 break;
             }
             else
