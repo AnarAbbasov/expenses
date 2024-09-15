@@ -12,4 +12,4 @@
 MENU *menu;
 void show_entry_form(WINDOW *form_window);
 void display_menu(WINDOW *main_window);
-
+void show_report_by_date_form(WINDOW *form_window);

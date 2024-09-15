@@ -122,3 +122,22 @@ void display_menu(WINDOW *main_window)
 
     wrefresh(main_window);
 }
+
+void show_report_by_date_form(WINDOW *form_window)
+{
+    FIELD *fields[3];
+    fields[0] = new_field(1, 20, 3, 2, 0, 0); //
+    fields[1] = new_field(1, 20, 6, 2, 0, 0);
+    fields[2] = NULL;
+    set_field_opts(fields[0], O_VISIBLE | O_PUBLIC | O_EDIT | O_ACTIVE);
+
+    set_field_back(fields[1], O_VISIBLE | O_PUBLIC | O_EDIT | O_ACTIVE);
+
+    FORM *my_form = new_form(fields);
+    set_form_sub(my_form, derwin(form_window, 10, 55, 1, 1));
+    wrefresh(form_window);
+    post_form(my_form);
+    mvwprintw(form_window, 3, 3, "DATE BEGIN");
+    mvwprintw(form_window, 6, 3, "DATE END");
+    wrefresh(form_window);
+}
