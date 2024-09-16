@@ -139,6 +139,7 @@ void show_report_by_date_form(WINDOW *form_window)
     post_form(my_form);
     mvwprintw(form_window, 3, 3, "DATE BEGIN");
     mvwprintw(form_window, 6, 3, "DATE END");
+    mvwprintw(form_window, 14, 3, "Enter to insert transaction");
     wrefresh(form_window);
     keypad(form_window, TRUE);
     char ch;
