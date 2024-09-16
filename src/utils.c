@@ -5,13 +5,6 @@
 
 
 
-
-
-
-
-
-
-
 void make_insert_data(char* Date,char * gallons,char * price,char * address)
 {
 
@@ -93,8 +86,6 @@ int validate_number(char *field_value) {
         fprintf(stderr, "Could not compile regex\n");
         return 5;
     }
-
-    
 
     // Execute regular expression
     reti = regexec(&regex, field_value, 1, pmatch, 0); // Pass pmatch array

@@ -165,6 +165,23 @@ void show_report_by_date_form(WINDOW *form_window)
         case 27:
             // delwin(form_window);
             return;
+        
+        case 10:
+            /* Go to previous field */
+            form_driver(my_form, REQ_END_LINE);
+             if (validate_datetime(field_buffer(fields[0], 0)) == 0 && validate_datetime(field_buffer(fields[1], 0)) == 0)
+             {
+                 show_alert(form_window, "valid");
+                 wrefresh(form_window);
+             }
+              else
+ {
+     show_alert(form_window, "errors on entrance");
+     // wclear(form_window);
+     return;
+ }
+ break;
+
         default:
             /* If this is a normal character, it gets
             /* Printed				  */
