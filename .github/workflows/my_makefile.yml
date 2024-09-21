@@ -16,6 +16,10 @@ jobs:
     - name: Install dependencies
       run: sudo yum install ncurses
 
+
+    - name: make required dirs
+      run: mkdir bin lib
+
     - name: build
       run: make
 
