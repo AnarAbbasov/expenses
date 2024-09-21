@@ -10,11 +10,11 @@ Terminal-based GUI using ncurses
 MySQL database integration
 Stored procedures for efficient data management
 #Installation
-To compile the project, run:
->make
+To compile the project,
+ run: >make
 To start the program, run:
 
->make run
+ run: >make run
 
 Dependencies:
 
