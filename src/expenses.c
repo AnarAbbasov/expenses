@@ -11,7 +11,8 @@ MYSQL_RES *res = NULL;
 
 
 int main()
-{
+{ 
+    /* input character*/
     char c;
     
     initialize_screen();    

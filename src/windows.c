@@ -33,7 +33,8 @@ void create_main_window()
  res = sendquery("SELECT * FROM expenses.gas_business");
  int i = 2;
  /* Generate headers*/
- wattron(my_window, COLOR_PAIR(2));
+ WHITE_BLUE(my_window);
+ //wattron(my_window, COLOR_PAIR(2));
  mvwprintw(my_window, 1, 1, "DATE");
  mvwprintw(my_window, 1, 27, "GALLONS");
  mvwprintw(my_window, 1, 35, "PRICE/G");
@@ -118,7 +119,8 @@ void show_entry_form(WINDOW *form_window)
     mvwprintw(form_window, 9, 3, "PRICE/GALLON");
     mvwprintw(form_window, 3, 30, "STORE ADDRESS");
     mvwprintw(form_window, 13, 3, "PgUP/PdDn(Navigation)");
-    wattron(form_window, COLOR_PAIR(3) | A_BOLD);
+    wattron(form_window, WHITE_RED_COLOR | A_BOLD);
+   
 
     mvwprintw(form_window, 14, 3, "Enter to insert transaction");
 
