@@ -10,5 +10,15 @@ Expenses is a text-based GUI program completely written in C. It helps you enter
 
 ## Installation
 To compile the project, run:
-```sh
+~~~
 make
+~~~
+
+to run project
+
+~~~
+make run
+~~~
+
+
+
