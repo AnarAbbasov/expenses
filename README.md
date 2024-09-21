@@ -1,25 +1,28 @@
-Expenses
-Description
+#Expenses
+
+
+#Description
+
 Expenses is a text-based GUI program completely written in C. It helps you enter and track your expenses, allowing you to see how much you’ve saved and spent on various categories like gas, groceries, etc.
 
-Features
+#Features
 Terminal-based GUI using ncurses
 MySQL database integration
 Stored procedures for efficient data management
-Installation
+#Installation
 To compile the project, run:
-# make
+>make
 To start the program, run:
 
-# make run
+>make run
 
 Dependencies:
 
 ncurses
 MySQL development headers and libraries
 
-Usage Examples
+#Usage Examples
 (Include any usage examples or code snippets here)
 
-License
+#License
 This project is licensed under the GPL.
