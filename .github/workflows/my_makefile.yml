@@ -24,7 +24,7 @@ jobs:
       run: make
     
     - name: package
-      run: tar zcvf lib/ bin/
+      run: tar zcvf testarball.tar.gz lib/ bin/
     
   
   
