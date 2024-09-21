@@ -22,6 +22,10 @@ jobs:
 
     - name: build
       run: make
-
-        
-        
+    
+    - name: package
+      run: tar zcvf lib/ bin/
+    
+  
+  
+  
