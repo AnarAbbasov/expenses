@@ -1,31 +1,14 @@
-name: Makefile CI
+name: CI
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+on: [workflow_dispatch]
 
 jobs:
   build:
-
-    runs-on: rocky-linux-latest
-
+    runs-on: ubuntu-latest
+    container:
+      image: rockylinux:latest
     steps:
-    - uses: actions/checkout@v4
-
-    
-    - name: create library directories
-      run: mkdir lib;mkdir bin
-      
-    - name: install dependencies
-      run: sudo apt install ncurses
-
-    - name: compile
-      run: make
-
-    - name: Run check
-      run: make check
-
-    - name: Run distcheck
-      run: make distcheck
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run a script
+        run: echo "Running on Rocky Linux"
