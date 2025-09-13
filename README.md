@@ -21,4 +21,10 @@ make run
 ~~~
 
 
+### Mysql DB 
+Database is running on linux server "kubernetes" which is in garage and running  rhel9 with IP address 192.168.1.110
+this is set by env variables in Makefile
 
+~~~
+DB_SERVER=192.168.1.110;export DBUSER=username;export PASSWORD=password
+~~~
