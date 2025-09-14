@@ -9,6 +9,11 @@ Expenses is a text-based GUI program completely written in C. It helps you enter
 - Stored procedures for efficient data management
 
 ## Installation
+To create project prerequisisites
+~~~
+make install
+~~~
+
 To compile the project, run:
 ~~~
 make

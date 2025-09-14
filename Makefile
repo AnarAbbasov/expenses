@@ -21,12 +21,24 @@ all: src/expenses.c lib/libdb_functions.so lib/libwindows.so lib/libutils.so
 ./lib/libutils.so: ./src/utils.c
 	$(CC) -g -fPIC -shared  ./src/utils.c -o ./lib/libutils.so -Iinclude	
 
+.PHONY: clean run install directories
+
 clean:
 	rm -f bin/expenses lib/libdb_functions.so lib/libwindows.so lib/libutils.so
 
+install:
+	sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2023
+	rpm -q gpg-pubkey
+	sudo dnf clean packages
+	sudo dnf clean metadata
+	sudo dnf install -y mysql-community-devel ncurses-devel 
+	mkdir  ./lib/   ./bin/
+	
+directories:
+	mkdir  ./lib/   ./bin/
+
 run:
 	export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH;export DB_SERVER=192.168.1.110;export DBUSER=anar;export PASSWORD=password;bin/expenses
-	
 	
 	
 	
