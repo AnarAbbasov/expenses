@@ -21,7 +21,7 @@ all: src/expenses.c lib/libdb_functions.so lib/libwindows.so lib/libutils.so
 ./lib/libutils.so: ./src/utils.c
 	$(CC) -g -fPIC -shared  ./src/utils.c -o ./lib/libutils.so -Iinclude	
 
-.PHONY: clean run install directories
+.PHONY: clean run install directories build
 
 clean:
 	rm -f bin/expenses lib/libdb_functions.so lib/libwindows.so lib/libutils.so
@@ -31,11 +31,16 @@ install:
 	rpm -q gpg-pubkey
 	sudo dnf clean packages
 	sudo dnf clean metadata
-	sudo dnf install -y mysql-community-devel ncurses-devel 
+	sudo dnf install -y mysql-community-devel ncurses-devel rpm-build rpmdevtools  rpmlint
 	mkdir  ./lib/   ./bin/
+
 	
 directories:
 	mkdir  ./lib/   ./bin/
+
+
+build: 
+	
 
 run:
 	export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH;export DB_SERVER=192.168.1.110;export DBUSER=anar;export PASSWORD=password;bin/expenses
