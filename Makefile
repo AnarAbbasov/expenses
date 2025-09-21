@@ -46,4 +46,3 @@ run:
 	export LD_LIBRARY_PATH=./lib:$LD_LIBRARY_PATH;export DB_SERVER=192.168.1.110;export DBUSER=anar;export PASSWORD=password;bin/expenses
 	
 	
-	
