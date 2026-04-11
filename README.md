@@ -1,35 +1,102 @@
-# Expenses
+# 💸 Expenses — Terminal-Based Expense Tracker (C + ncurses + MySQL)
 
-## Description
-Expenses is a text-based GUI program completely written in C. It helps you enter and track your expenses, allowing you to see how much you've saved and spent on various categories like gas, groceries, etc.
+**Expenses** is a lightweight, terminal‑based expense tracking application written entirely in **C**.  
+It provides a clean ncurses‑powered text UI and integrates with a **MySQL database** to help you track spending, savings, and categories like gas, groceries, utilities, and more.
 
-## Features
-- Terminal-based GUI using `ncurses`
-- MySQL database integration
-- Stored procedures for efficient data management
+---
 
-## Installation
-To create project prerequisisites
-~~~
+## ✨ Features
+
+- 🖥️ **Text‑based GUI** using **ncurses**
+- 🗄️ **MySQL database integration**
+- ⚙️ **Stored procedures** for efficient data operations
+- 📊 Track expenses by category
+- 💾 Persistent storage on a remote Linux server
+- 🚀 Fast, minimal, and written in pure C
+
+---
+
+## 📦 Installation
+
+### 1️⃣ Install prerequisites
+
+```bash
 make install
-~~~
-
-To compile the project, run:
-~~~
+2️⃣ Compile the project
+bash
 make
-~~~
-
-to run project
-
-~~~
+3️⃣ Run the program
+bash
 make run
-~~~
+🗄️ MySQL Database Configuration
+The MySQL database runs on a Linux server named kubernetes, located in your garage and running RHEL 9.
 
+Server IP: 192.168.1.110
 
-### Mysql DB 
-Database is running on linux server "kubernetes" which is in garage and running  rhel9 with IP address 192.168.1.110
-this is set by env variables in Makefile
+These values are configured via environment variables inside the Makefile.
 
-~~~
-DB_SERVER=192.168.1.110;export DBUSER=username;export PASSWORD=password
-~~~
+Environment variables used:
+bash
+export DB_SERVER=192.168.1.110
+export DBUSER=username
+export PASSWORD=password
+Make sure these are set before running the application.
+
+📁 Project Structure
+Code
+Expenses/
+├── src/
+│   ├── main.c
+│   ├── ui.c
+│   ├── db.c
+│   └── ...
+├── include/
+│   ├── ui.h
+│   ├── db.h
+│   └── ...
+├── sql/
+│   └── stored_procedures.sql
+├── Makefile
+└── README.md
+🛠️ Technologies Used
+C programming
+
+ncurses
+
+MySQL
+
+Stored procedures
+
+Linux (RHEL9)
+
+Makefile automation
+
+🚀 Future Enhancements
+CSV export
+
+ASCII‑based charts
+
+Budget alerts
+
+Category analytics
+
+Dockerized MySQL instance
+
+👤 Author
+Anar Abbasov  
+📧 anar_abbasov@hotmail.com
+🔧 Embedded Systems • Linux C • Python/Django • Automation
+
+Code
+
+---
+
+If you want, I can also create:
+
+- a **project logo/banner**  
+- a **demo GIF** section  
+- **badges** (build status, language stats, license)  
+- a **CONTRIBUTING.md**  
+- a **Makefile improvements** section  
+
+Just tell me and I’ll shape it exactly how you want.
