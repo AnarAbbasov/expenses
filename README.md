@@ -87,16 +87,5 @@ Anar Abbasov
 📧 anar_abbasov@hotmail.com
 🔧 Embedded Systems • Linux C • Python/Django • Automation
 
-Code
-
----
-
-If you want, I can also create:
-
-- a **project logo/banner**  
-- a **demo GIF** section  
-- **badges** (build status, language stats, license)  
-- a **CONTRIBUTING.md**  
-- a **Makefile improvements** section  
 
 Just tell me and I’ll shape it exactly how you want.
