@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/expenses-logo.png" alt="Expenses Logo" width="200"/>
+</p>
+
 # 💸 Expenses — Terminal-Based Expense Tracker (C + ncurses + MySQL)
 
 **Expenses** is a lightweight, terminal‑based expense tracking application written entirely in **C**.  
