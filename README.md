@@ -88,4 +88,3 @@ Anar Abbasov
 🔧 Embedded Systems • Linux C • Python/Django • Automation
 
 
-Just tell me and I’ll shape it exactly how you want.
